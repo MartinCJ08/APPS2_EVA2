@@ -1,6 +1,7 @@
 package com.example.eva2_3_content_values;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     EditText edtTxtNom;
     EditText edtTxtApe;
     TextView txtVwShow;
-
+    Cursor cursor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +27,19 @@ public class MainActivity extends AppCompatActivity {
         sqDB = openOrCreateDatabase("db_prueba",MODE_PRIVATE,null);
 
         try {
-            sqDB.execSQL("create table datos(" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT, nombre text, ape text"+")");
+            sqDB.execSQL("CREATE TABLE datos(id INTEGER PRIMARY KEY AUTOINCREMENT, nombre TEXT, ape TEXT)");
         }catch (SQLException e){
             e.printStackTrace();
+        }
+
+
+        cursor= sqDB.rawQuery("select * from datos",null);
+        cursor.moveToFirst();
+
+        while(!cursor.isAfterLast()){
+            txtVwShow.append(cursor.getString(cursor.getColumnIndex("nombre")));
+            txtVwShow.append(cursor.getString(cursor.getColumnIndex("ape"))+" \n");
+            cursor.moveToNext();
         }
     }
 
@@ -38,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         contentValues.put("nombre", edtTxtNom.getText().toString());
         contentValues.put("ape", edtTxtApe.getText().toString());
         sqDB.insert("datos",null,contentValues);
+
+        cursor = sqDB.rawQuery("select * from datos",null);
+        cursor.moveToLast();
+        txtVwShow.append(cursor.getString(cursor.getColumnIndex("nombre")));
+        txtVwShow.append(" ");
+        txtVwShow.append(cursor.getString(cursor.getColumnIndex("ape")));
+        txtVwShow.append("\n");
         //contentValues.clear(); Cunado quieres limpiar el content
     }
 }
