@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">EVA2_5_SHARED_PREFERENCES</string>
+    <string-array name="input">
+        <item>AZUL</item>
+        <item>AMARILLO</item>
+        <item>NARANJA</item>
+        <item>ROJO</item>
+    </string-array>
+    <string-array name="valores">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+</resources>
