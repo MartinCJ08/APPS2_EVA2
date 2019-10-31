@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgVwClima"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtVwCiudad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CIUDAD"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="28dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtVwTemp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TEMPERATURA" />
+
+        <TextView
+            android:id="@+id/txtVwClima"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nubecita" />
+
+        <TextView
+            android:id="@+id/txtVwDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Amaneci pa disfrutar" />
+
+    </LinearLayout>
+
+</LinearLayout>
